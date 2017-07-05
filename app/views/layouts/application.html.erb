@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AmazonJune2017</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <div class="container">
+
+  </div>
+</nav>
+  <body>
+    <span><%= link_to 'Home', home_path %></span>
+    <span><%= link_to 'About', about_path %></span>
+    <%= yield %>
+  </body>
+</html>
