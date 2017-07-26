@@ -1,20 +1,47 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>AmazonJune2017</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>AmazonJune2017</title>
+  <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+</head>
 
-  <div class="container">
+<body>
+  <div>
+    <span><%= link_to 'Home', home_path %> | </span>
+    <span><%= link_to 'About', about_path %> | </span>
+    <span><%= link_to 'Contact', contact_path %> | </span>
+    <span><%= link_to 'All Products', products_path %> | </span>
+    <span><%= link_to 'New Product', new_product_path %></span>
 
+
+    <% if user_signed_in? %>
+    <span>
+      <%= link_to 'Log Out', sessions_path, method: :delete,
+      data: {confirm: 'Logout?'} %>
+    </span>
+    <% else %>
+    <%= link_to 'Login', new_session_path %>
+    <%= link_to 'Sign Up', new_user_path %>
+    <% end %>
   </div>
-</nav>
-  <body>
-    <span><%= link_to 'Home', home_path %></span>
-    <span><%= link_to 'About', about_path %></span>
-    <%= yield %>
-  </body>
+
+
+  <% if flash[:notice] %>
+  <div class='alert alert-success'>
+    <%= flash[:notice] %>
+  </div>
+  <% elsif flash[:alert] %>
+  <div class='alert alert-danger'>
+    <%= flash[:alert] %>
+  </div>
+  <% end %>
+
+
+  <%= yield %>
+
+  
+</body>
 </html>

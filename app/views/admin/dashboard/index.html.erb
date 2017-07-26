@@ -1,0 +1,53 @@
+<h1>Admin Dashboard</h1>
+
+<p>Product Count: <%= @products.count %></p>
+<p>Review Count: <%= @reviews.count %></p>
+<p>User Count: <%= @users.count %></p>
+
+<hr>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Admin User?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.first_name %></td>
+        <td><%= user.last_name %></td>
+        <td><%= user.email %></td>
+        <td><strong><%= user.is_admin? ? 'YES' : nil %></strong></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<hr>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @products.each do |product| %>
+      <%= link_to(product) do %>
+        <tr>
+          <td><%= product.title %></td>
+          <td><%= product.description.truncate(50) %></td>
+          <td>$<%= product.price %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

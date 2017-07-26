@@ -3,7 +3,7 @@ class ContactController < ApplicationController
   end
 
   def create
-     @name = params[:name] 
-     render 'new'
+    @name = params[:name]
+    render 'new'
   end
 end
